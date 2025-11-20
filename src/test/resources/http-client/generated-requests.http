@@ -1,0 +1,76 @@
+### Swagger UI
+# Open in browser: http://localhost:8080/swagger-ui/index.html
+
+###
+# @name Swagger OpenAPI Spec JSON
+GET {{url}}/v3/api-docs
+Accept: application/json
+
+###
+
+###
+# @name Calculate Individual Client Cart
+POST {{url}}/api/v1/cart/calculate
+Content-Type: application/json
+
+{
+  "client": {
+    "type": "INDIVIDUAL",
+    "clientId": "IND001",
+    "firstName": "John",
+    "lastName": "Doe"
+  },
+  "items": [
+    {
+      "productType": "HIGH_END_PHONE",
+      "quantity": 2
+    },
+    {
+      "productType": "LAPTOP",
+      "quantity": 1
+    }
+  ]
+}
+
+###
+# @name Calculate Professional High Revenue Cart
+POST {{url}}/api/v1/cart/calculate
+Content-Type: application/json
+
+{
+  "client": {
+    "type": "PROFESSIONAL",
+    "clientId": "PRO001",
+    "companyName": "Tech Corp",
+    "vatNumber": "FR123456789",
+    "registrationNumber": "REG123",
+    "annualRevenue": 15000000
+  },
+  "items": [
+    {
+      "productType": "MID_RANGE_PHONE",
+      "quantity": 10
+    }
+  ]
+}
+
+###
+# @name Calculate Professional Low Revenue Cart
+POST {{url}}/api/v1/cart/calculate
+Content-Type: application/json
+
+{
+  "client": {
+    "type": "PROFESSIONAL",
+    "clientId": "PRO002",
+    "companyName": "Small Business Ltd",
+    "registrationNumber": "REG456",
+    "annualRevenue": 5000000
+  },
+  "items": [
+    {
+      "productType": "LAPTOP",
+      "quantity": 3
+    }
+  ]
+}

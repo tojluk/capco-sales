@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn clean compile:*)",
+      "Bash(where:*)",
+      "Bash(c:mvnbinmvnd clean compile)",
+      "Bash(/c/mvn/bin/mvnd clean:*)",
+      "Bash(JAVA_HOME=\"C:\\Users\\RdpAdmin\\.jdks\\semeru-21.0.8\" /c/mvn/bin/mvnd clean compile:*)",
+      "Bash(JAVA_HOME=\"C:\\Users\\RdpAdmin\\.jdks\\semeru-21.0.8\" /c/mvn/bin/mvnd test:*)",
+      "Bash(JAVA_HOME=\"C:\\Users\\RdpAdmin\\.jdks\\semeru-21.0.8\" /c/mvn/bin/mvnd verify:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
