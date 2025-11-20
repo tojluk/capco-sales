@@ -2,16 +2,14 @@
 Spring Boot 3 Technical Test Starter
 
 ## Overview
-This is a Spring Boot 3 starter project built with Java 21, featuring a RESTful API for product management with comprehensive unit and integration tests.
+This is a minimal Spring Boot 3 starter project built with Java 21, featuring a simple RESTful API with unit and integration tests.
 
 ## Technologies
 - **Java 21** - LTS version with modern Java features
 - **Spring Boot 3.2.0** - Latest Spring Boot framework
-- **Spring Data JPA** - For database operations
-- **H2 Database** - In-memory database for development and testing
+- **Maven** - Build and dependency management
 - **JUnit 5** - Unit testing framework
 - **Mockito** - Mocking framework for unit tests
-- **Maven** - Build and dependency management
 
 ## Prerequisites
 - Java 21 (JDK 21)
@@ -25,11 +23,9 @@ capco-sales/
 │   │   ├── java/com/capco/sales/
 │   │   │   ├── SalesApplication.java           # Main application class
 │   │   │   ├── controller/
-│   │   │   │   └── ProductController.java      # REST API endpoints
+│   │   │   │   └── ProductController.java      # REST API endpoint
 │   │   │   ├── model/
-│   │   │   │   └── Product.java                # Product entity
-│   │   │   ├── repository/
-│   │   │   │   └── ProductRepository.java      # JPA repository
+│   │   │   │   └── Product.java                # Product model
 │   │   │   └── service/
 │   │   │       └── ProductService.java         # Business logic
 │   │   └── resources/
@@ -38,9 +34,9 @@ capco-sales/
 │       ├── java/com/capco/sales/
 │       │   ├── SalesApplicationTests.java      # Context load test
 │       │   ├── controller/
-│       │   │   └── ProductControllerIT.java    # Integration tests
+│       │   │   └── ProductControllerIT.java    # Integration test
 │       │   └── service/
-│       │       └── ProductServiceTest.java     # Unit tests
+│       │       └── ProductServiceTest.java     # Unit test
 │       └── resources/
 │           └── application.properties          # Test configuration
 └── pom.xml
@@ -88,50 +84,35 @@ The application will start on `http://localhost:8080`
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/products` | Get all products |
-| GET | `/api/products/{id}` | Get product by ID |
-| POST | `/api/products` | Create a new product |
-| PUT | `/api/products/{id}` | Update product by ID |
-| DELETE | `/api/products/{id}` | Delete product by ID |
-| GET | `/api/products/search?name={name}` | Search products by name |
 
-### Example Request (Create Product)
+### Example Request
 ```bash
-curl -X POST http://localhost:8080/api/products \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Laptop",
-    "description": "High-performance laptop",
-    "price": 1299.99
-  }'
+curl -X GET http://localhost:8080/api/products
 ```
 
 ### Example Response
 ```json
-{
-  "id": 1,
-  "name": "Laptop",
-  "description": "High-performance laptop",
-  "price": 1299.99
-}
+[
+  {
+    "id": "1"
+  },
+  {
+    "id": "2"
+  }
+]
 ```
-
-## H2 Console
-Access the H2 database console at: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:salesdb`
-- Username: `sa`
-- Password: (leave empty)
 
 ## Testing
 
 ### Unit Tests
 Located in `src/test/java/com/capco/sales/service/`
 - Tests the service layer in isolation using Mockito
-- 9 test cases covering all service methods
+- 1 test case covering getAllProducts method
 
 ### Integration Tests
 Located in `src/test/java/com/capco/sales/controller/`
-- Tests the full application stack (controller → service → repository → database)
-- 10 test cases covering all API endpoints
+- Tests the full application stack (controller → service)
+- 1 test case covering the GET /api/products endpoint
 - Uses `@SpringBootTest` and `MockMvc`
 
 ### Running Specific Tests
@@ -144,17 +125,16 @@ mvn test -Dtest=ProductControllerIT
 ```
 
 ## Test Coverage
-- **Unit Tests**: 9 tests - Service layer with mocked dependencies
-- **Integration Tests**: 10 tests - Full stack REST API testing
+- **Unit Tests**: 1 test - Service layer with no external dependencies
+- **Integration Tests**: 1 test - Full stack REST API testing
 - **Context Test**: 1 test - Application context loading
 
 ## Development
 This project follows Spring Boot best practices:
 - RESTful API design
-- Layered architecture (Controller → Service → Repository)
+- Layered architecture (Controller → Service)
 - Dependency injection
-- Exception handling
-- Test-driven development with comprehensive test coverage
+- Test-driven development with unit and integration test coverage
 
 ## License
 This is a technical test project for educational purposes.
