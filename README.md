@@ -1,5 +1,7 @@
 # Capco Sales - Shopping Cart API
 
+m.degtjarev@gmail.com
+
 Spring Boot 3 Shopping Cart Calculation API with Java 21
 
 ## Overview
